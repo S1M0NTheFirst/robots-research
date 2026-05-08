@@ -1,0 +1,4 @@
+Benefit_Label,Benefit_X,Benefit_Y,Neutral_Label,Neutral_X,Neutral_Y,Regression_Label,Regression_X,Regression_Y,RefLine_X,RefLine_Y
+GPT-OSS-20B,2.6719,0.3579,Gemma-4-26B,2.281,0.0094,ASI1,2.0,-0.1647,1.5,0.0
+DeepSeek-R1,2.4229,0.1143,Claude-Haiku,2.0,-0.0105,GPT-4o,1.9571,-0.0494,3.1,0.0
+Qwen3-32B,1.725,0.1857,LLaMA-3.3,1.7917,0.0089,Gemini-Flash,1.9396,-0.0978,,

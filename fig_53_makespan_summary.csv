@@ -1,0 +1,10 @@
+llm,avg_delta_ticks,n_valid_scenarios,n_na_scenarios,bar_color,interpretation
+gemini-2.0-flash,-12.8,8,0,GREEN,Override faster (better)
+claude-haiku,-9.2,8,0,GREEN,Override faster (better)
+deepseek-r1,-8.2,6,1,GREEN,Override faster (better)
+asi1,-7.2,5,3,GREEN,Override faster (better)
+gpt-oss-20b,3.4,5,3,RED,Override slower (worse)
+qwen3-32b,3.7,7,1,RED,Override slower (worse)
+gemma-4-26b-a4b,4.5,8,0,RED,Override slower (worse)
+llama-3.3-70b,6.7,6,2,RED,Override slower (worse)
+gpt-4o,7.9,8,0,RED,Override slower (worse)
