@@ -100,8 +100,11 @@ def make_single_heatmap(
 
     plt.tight_layout()
     plt.savefig(out_path, dpi=300, bbox_inches='tight', facecolor='white')
+    pdf_path = out_path.replace('.png', '.pdf')
+    plt.savefig(pdf_path, bbox_inches='tight', facecolor='white')
     plt.close(fig)
     print(f'Saved: {out_path}')
+    print(f'Saved: {pdf_path}')
 
 
 # ── Load master data ──────────────────────────────────────────────────────────
