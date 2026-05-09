@@ -69,7 +69,7 @@ for sc in SCENARIOS:
         segments[key] = [avg_w, avg_m, avg_s, pure_i]
 
 # ── 3. Plot ───────────────────────────────────────────────────────────────────
-plt.rcParams.update({'font.family': 'Arial', 'font.size': 14})
+plt.rcParams.update({'font.family': 'Arial', 'font.size': 16})
 
 COLORS = {
     'Working':   '#2d8f4e',   # dark green
@@ -79,13 +79,12 @@ COLORS = {
 }
 SEG_KEYS   = ['Working', 'Moving', 'Stuck', 'Pure Idle']
 
-n_scenarios = len(SCENARIOS)
-n_conds     = len(CONDITIONS)
-bar_w       = 0.35
-group_gap   = 0.15                        # gap between conditions inside one group
-group_w     = n_conds * bar_w + group_gap # total width of one scenario group
+bar_w     = 0.32
+gap       = 0.08
+group_gap = 0.72   # widened so 8 scenario groups span the same x-range as
+                   # the 9-LLM figure → bars render at identical physical width
 
-fig, ax = plt.subplots(figsize=(13, 6))
+fig, ax = plt.subplots(figsize=(14, 6))
 fig.patch.set_facecolor('white')
 ax.set_facecolor('white')
 
@@ -93,39 +92,33 @@ x_ticks = []
 x_labels = []
 
 for g_idx, sc in enumerate(SCENARIOS):
-    group_centre = g_idx * (group_w + 0.3)
+    group_centre = g_idx * (2 * bar_w + gap + group_gap)
     for c_idx, cond in enumerate(CONDITIONS):
-        x = group_centre + c_idx * (bar_w + group_gap / n_conds)
-        segs = segments[(sc, cond)]        # [working, moving, stuck, pure_idle]
+        x = group_centre + c_idx * (bar_w + gap)
+        segs = segments[(sc, cond)]
         bottom = 0.0
-        for s_idx, (seg_name, val) in enumerate(zip(SEG_KEYS, segs)):
-            color = COLORS[seg_name]
-            # Slight transparency for SAI bars so baseline is more prominent
-            alpha = 1.0 if cond == 'baseline' else 0.78
-            ax.bar(x, val, bar_w, bottom=bottom, color=color, alpha=alpha,
-                   edgecolor='white', linewidth=0.4)
+        for seg_name, val in zip(SEG_KEYS, segs):
+            ax.bar(x, val, bar_w, bottom=bottom, color=COLORS[seg_name],
+                   alpha=1.0, edgecolor='white', linewidth=0.4)
             bottom += val
 
-        # Label each bar with condition abbreviation
         label = 'Base' if cond == 'baseline' else 'SAI'
-        ax.text(x, -3.5, label, ha='center', va='top', fontsize=9,
+        ax.text(x, -3.5, label, ha='center', va='top', fontsize=11,
                 fontfamily='Arial', color='#444444')
 
-    # Scenario tick mark at group centre
-    x_ticks.append(group_centre + (bar_w + group_gap / n_conds) / 2)
+    pair_centre = group_centre + (bar_w + gap) / 2
+    x_ticks.append(pair_centre)
     x_labels.append(f'S{g_idx+1}')
 
 # ── Axes formatting ───────────────────────────────────────────────────────────
 ax.set_xticks(x_ticks)
 ax.set_xticklabels(x_labels, fontsize=13, fontfamily='Arial')
-ax.set_xlim(-0.4, x_ticks[-1] + group_w)
+ax.set_xlim(-0.4, x_ticks[-1] + bar_w + group_gap / 2)
 ax.set_ylim(-8, 108)
 ax.set_yticks(range(0, 101, 20))
-ax.set_yticklabels([f'{v}%' for v in range(0, 101, 20)], fontsize=12, fontfamily='Arial')
-ax.set_ylabel('% of Simulation Ticks', fontsize=14, labelpad=8, fontfamily='Arial')
-ax.set_xlabel('Scenario', fontsize=14, labelpad=22, fontfamily='Arial')
-ax.set_title('Robot Time Allocation per Scenario\n(averaged across all LLMs and robots)',
-             fontsize=15, fontweight='bold', pad=12, fontfamily='Arial')
+ax.set_yticklabels([f'{v}%' for v in range(0, 101, 20)], fontsize=16, fontfamily='Arial')
+ax.set_ylabel('% of Simulation Ticks', fontsize=16, labelpad=8, fontfamily='Arial')
+ax.set_xlabel('Scenario', fontsize=16, labelpad=12, fontfamily='Arial')
 
 # Gridlines
 ax.yaxis.grid(True, linestyle='--', linewidth=0.5, alpha=0.6, color='#aaaaaa')
@@ -135,11 +128,11 @@ for spine in ['top', 'right']:
 
 # Legend
 patches = [mpatches.Patch(color=COLORS[k], label=k) for k in SEG_KEYS]
-ax.legend(handles=patches, loc='upper right', fontsize=11,
+ax.legend(handles=patches, loc='upper right', fontsize=16,
           framealpha=0.9, edgecolor='#cccccc')
 
-plt.tight_layout()
+plt.subplots_adjust(left=0.09, right=0.99, top=0.97, bottom=0.22)
 out = 'figures/fig_robot_timeshare.png'
-plt.savefig(out, dpi=300, bbox_inches='tight', facecolor='white')
+plt.savefig(out, dpi=300, facecolor='white')
 plt.close(fig)
 print(f'Saved: {out}')
