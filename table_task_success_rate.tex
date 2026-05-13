@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering
+\setlength{\tabcolsep}{4pt}
+\caption{Task Success Rate comparison between Baseline and SAI across 8 Scenarios}
+\label{tab:task_success_rate}
+\begin{tabular}{lcccccccccccccccc}
+\toprule
+& \multicolumn{2}{c}{S1} & \multicolumn{2}{c}{S2} & \multicolumn{2}{c}{S3} & \multicolumn{2}{c}{S4} & \multicolumn{2}{c}{S5} & \multicolumn{2}{c}{S6} & \multicolumn{2}{c}{S7} & \multicolumn{2}{c}{S8} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11} \cmidrule(lr){12-13} \cmidrule(lr){14-15} \cmidrule(lr){16-17}
+LLM & Base & SAI & Base & SAI & Base & SAI & Base & SAI & Base & SAI & Base & SAI & Base & SAI & Base & SAI \\
+\midrule
+ASI1 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & \textbf{0.80} & \cellcolor{red!15}0.00 & 0.00 & \cellcolor{green!20}\textbf{0.75} & \textbf{1.00} & \cellcolor{red!15}0.88 & \textbf{1.00} & \cellcolor{red!15}0.86 & \textbf{1.00} & \cellcolor{red!15}0.00 \\
+Claude-Haiku & 0.75 & \cellcolor{green!20}\textbf{1.00} & 1.00 & 1.00 & 1.00 & 1.00 & 0.83 & \cellcolor{green!20}\textbf{1.00} & 0.75 & 0.75 & 1.00 & 1.00 & 1.00 & 1.00 & \textbf{1.00} & \cellcolor{red!15}0.50 \\
+DeepSeek-R1 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.80 & \cellcolor{green!20}\textbf{1.00} & 0.00 & \cellcolor{green!20}\textbf{0.75} & 1.00 & 1.00 & \textbf{1.00} & \text{--} & 1.00 & 1.00 \\
+Gemini-2.0-Flash & 0.50 & 0.50 & \textbf{1.00} & \cellcolor{red!15}0.50 & 1.00 & 1.00 & 0.80 & \cellcolor{green!20}\textbf{1.00} & 0.75 & 0.75 & \textbf{1.00} & \cellcolor{red!15}0.88 & 0.43 & \cellcolor{green!20}\textbf{0.57} & \textbf{1.00} & \cellcolor{red!15}0.50 \\
+Gemma-4-26B & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.80 & \cellcolor{green!20}\textbf{1.00} & 0.75 & 0.75 & \textbf{1.00} & \cellcolor{red!15}0.88 & 1.00 & 1.00 & 1.00 & 1.00 \\
+GPT-4o & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.80 & \cellcolor{green!20}\textbf{0.83} & 0.75 & 0.75 & 0.88 & 0.88 & \textbf{1.00} & \cellcolor{red!15}0.57 & 1.00 & 1.00 \\
+GPT-OSS-20B & 1.00 & 1.00 & 0.00 & \cellcolor{green!20}\textbf{1.00} & 0.20 & \cellcolor{green!20}\textbf{1.00} & \textbf{0.80} & \cellcolor{red!15}0.17 & 0.00 & \cellcolor{green!20}\textbf{0.75} & 0.63 & \cellcolor{green!20}\textbf{1.00} & \textbf{1.00} & \cellcolor{red!15}0.57 & 0.00 & \cellcolor{green!20}\textbf{1.00} \\
+LLaMA-3.3-70B & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.00 & \cellcolor{green!20}\textbf{0.50} & 0.88 & 0.88 & \textbf{0.43} & \cellcolor{red!15}0.00 & 1.00 & 1.00 \\
+Qwen3-32B & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 0.80 & \cellcolor{green!20}\textbf{1.00} & 0.75 & 0.75 & 0.88 & 0.88 & 0.43 & \cellcolor{green!20}\textbf{0.71} & 0.00 & \cellcolor{green!20}\textbf{1.00} \\
+\bottomrule
+\end{tabular}
+\end{table*}

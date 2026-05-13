@@ -106,7 +106,7 @@ for g_idx, (llm, label) in enumerate(zip(LLM_ORDER, LLM_LABELS)):
 
         cond_label = 'Base' if cond == 'baseline' else 'SAI'
         ax.text(x, -3.5, cond_label, ha='center', va='top',
-                fontsize=11, fontfamily='Arial', color='#444444')
+                fontsize=13, fontfamily='Arial', color='#444444')
 
     # LLM label centred under the pair
     pair_centre = group_centre + (bar_w + gap) / 2
@@ -115,7 +115,7 @@ for g_idx, (llm, label) in enumerate(zip(LLM_ORDER, LLM_LABELS)):
 
 # ── Axes ──────────────────────────────────────────────────────────────────────
 ax.set_xticks(x_ticks)
-ax.set_xticklabels(x_labels, fontsize=13, fontfamily='Arial', rotation=15, ha='right')
+ax.set_xticklabels(x_labels, fontsize=15, fontfamily='Arial', rotation=15, ha='right')
 ax.set_xlim(-0.4, x_ticks[-1] + bar_w + group_gap / 2)
 ax.set_ylim(-8, 108)
 ax.set_yticks(range(0, 101, 20))
@@ -135,5 +135,8 @@ ax.legend(handles=patches, loc='upper right', fontsize=16,
 plt.subplots_adjust(left=0.09, right=0.99, top=0.97, bottom=0.22)
 out = 'figures/fig_robot_llm_timeshare.png'
 plt.savefig(out, dpi=300, facecolor='white')
+pdf_out = out.replace('.png', '.pdf')
+plt.savefig(pdf_out, facecolor='white')
 plt.close(fig)
 print(f'Saved: {out}')
+print(f'Saved: {pdf_out}')

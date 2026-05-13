@@ -84,19 +84,19 @@ def make_single_heatmap(
         linecolor='#dddddd',
         cbar=True,
         cbar_kws={'label': cbar_label, 'shrink': 0.85},
-        annot_kws={'size': 11, 'family': 'Arial'},
+        annot_kws={'size': 14, 'family': 'Arial'},
     )
 
-    ax.set_title(title, fontsize=16, fontweight='bold', pad=12, fontfamily='Arial')
+    ax.set_title(title, fontsize=18, fontweight='bold', pad=12, fontfamily='Arial')
     ax.set_xlabel('Scenario', fontsize=16, labelpad=8, fontfamily='Arial')
     ax.set_ylabel('LLM', fontsize=16, labelpad=8, fontfamily='Arial')
-    ax.tick_params(axis='x', labelsize=13, rotation=0)
-    ax.tick_params(axis='y', labelsize=13, rotation=0)
+    ax.tick_params(axis='x', labelsize=14, rotation=0)
+    ax.tick_params(axis='y', labelsize=14, rotation=0)
     for lbl in ax.get_xticklabels() + ax.get_yticklabels():
         lbl.set_fontfamily('Arial')
     ax.figure.axes[-1].yaxis.label.set_fontfamily('Arial')
-    ax.figure.axes[-1].yaxis.label.set_fontsize(14)
-    ax.figure.axes[-1].tick_params(labelsize=12)
+    ax.figure.axes[-1].yaxis.label.set_fontsize(15)
+    ax.figure.axes[-1].tick_params(labelsize=13)
 
     plt.tight_layout()
     plt.savefig(out_path, dpi=300, bbox_inches='tight', facecolor='white')
